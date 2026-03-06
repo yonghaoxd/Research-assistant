@@ -22,17 +22,19 @@ def get_embeddings(texts: list[str]) -> list:
     response = co.embed(
         texts=texts,
         model="embed-english-v3.0",
-        input_type="search_document"
+        input_type="search_document",
+        embedding_types=["float"]
     )
-    return response.embeddings
+    return response.embeddings.float_
 
 def get_query_embedding(query: str) -> list:
     response = co.embed(
         texts=[query],
         model="embed-english-v3.0",
-        input_type="search_query"
+        input_type="search_query",
+        embedding_types=["float"]
     )
-    return response.embeddings[0]
+    return response.embeddings.float_[0]
 
 def load_pdf(path: str) -> int:
     reader = PdfReader(path)

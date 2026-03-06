@@ -30,9 +30,10 @@ class MemorySystem:
         response = co.embed(
             texts=texts,
             model="embed-english-v3.0",
-            input_type=input_type
+            input_type=input_type,
+            embedding_types=["float"]
         )
-        return response.embeddings
+        return response.embeddings.float_
 
     def load_long_term(self):
         if os.path.exists(MEMORY_FILE):
@@ -116,3 +117,13 @@ class MemorySystem:
             )
         except:
             return "No relevant memories."
+        
+
+        response = co.embed(
+            texts=[query],
+            model="embed-english-v3.0",
+            input_type="search_query",
+            embedding_types=["float"]
+        )
+        return response.embeddings.float_[0]
+        

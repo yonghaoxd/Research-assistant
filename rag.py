@@ -1,18 +1,38 @@
+import cohere
 from pypdf import PdfReader
-from sentence_transformers import SentenceTransformer
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
+from dotenv import load_dotenv
 import re
+import os
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
+load_dotenv()
+
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 qdrant = QdrantClient(":memory:")
 COLLECTION = "research_docs"
-VECTOR_SIZE = 384
+VECTOR_SIZE = 1024  # Cohere embed-english-v3.0 outputs 1024 dimensions
 
 qdrant.create_collection(
     collection_name=COLLECTION,
     vectors_config=VectorParams(size=VECTOR_SIZE, distance=Distance.COSINE)
 )
+
+def get_embeddings(texts: list[str]) -> list:
+    response = co.embed(
+        texts=texts,
+        model="embed-english-v3.0",
+        input_type="search_document"
+    )
+    return response.embeddings
+
+def get_query_embedding(query: str) -> list:
+    response = co.embed(
+        texts=[query],
+        model="embed-english-v3.0",
+        input_type="search_query"
+    )
+    return response.embeddings[0]
 
 def load_pdf(path: str) -> int:
     reader = PdfReader(path)
@@ -23,11 +43,14 @@ def load_pdf(path: str) -> int:
     for i in range(0, len(words), 450):
         chunk = " ".join(words[i:i+450])
         chunks.append(chunk)
-    embeddings = model.encode(chunks, show_progress_bar=False)
+
+    print(f"Embedding {len(chunks)} chunks with Cohere...")
+    embeddings = get_embeddings(chunks)
+
     points = [
         PointStruct(
             id=i,
-            vector=embeddings[i].tolist(),
+            vector=embeddings[i],
             payload={"text": chunks[i], "chunk_id": i}
         )
         for i in range(len(chunks))
@@ -36,7 +59,7 @@ def load_pdf(path: str) -> int:
     return len(chunks)
 
 def search_docs(query: str, top_k: int = 3) -> str:
-    embedding = model.encode([query])[0].tolist()
+    embedding = get_query_embedding(query)
     results = qdrant.query_points(
         collection_name=COLLECTION,
         query=embedding,

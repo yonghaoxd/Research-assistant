@@ -1,14 +1,17 @@
-from sentence_transformers import SentenceTransformer
+import cohere
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
+from dotenv import load_dotenv
 from datetime import datetime
 import json
 import os
 
-model = SentenceTransformer('all-MiniLM-L6-v2')
+load_dotenv()
+
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 qdrant = QdrantClient(":memory:")
 MEMORY_COLLECTION = "memory"
-VECTOR_SIZE = 384
+VECTOR_SIZE = 1024
 
 qdrant.create_collection(
     collection_name=MEMORY_COLLECTION,
@@ -23,6 +26,14 @@ class MemorySystem:
         self.counter = 0
         self.load_long_term()
 
+    def _embed(self, texts: list[str], input_type: str = "search_document") -> list:
+        response = co.embed(
+            texts=texts,
+            model="embed-english-v3.0",
+            input_type=input_type
+        )
+        return response.embeddings
+
     def load_long_term(self):
         if os.path.exists(MEMORY_FILE):
             with open(MEMORY_FILE, 'r') as f:
@@ -30,11 +41,11 @@ class MemorySystem:
                 self.counter = data.get("counter", 0)
                 memories = data.get("memories", [])
                 if memories:
-                    embeddings = model.encode([m["content"] for m in memories])
+                    embeddings = self._embed([m["content"] for m in memories])
                     points = [
                         PointStruct(
                             id=memories[i]["id"],
-                            vector=embeddings[i].tolist(),
+                            vector=embeddings[i],
                             payload=memories[i]
                         )
                         for i in range(len(memories))
@@ -48,7 +59,7 @@ class MemorySystem:
             "timestamp": datetime.now().isoformat(),
             "session": datetime.now().strftime("%Y-%m-%d")
         }
-        embedding = model.encode([content])[0].tolist()
+        embedding = self._embed([content])[0]
         qdrant.upsert(
             collection_name=MEMORY_COLLECTION,
             points=[PointStruct(
@@ -91,7 +102,7 @@ class MemorySystem:
                         )
             return "No past memories."
 
-        embedding = model.encode([query])[0].tolist()
+        embedding = self._embed([query], input_type="search_query")[0]
         try:
             results = qdrant.query_points(
                 collection_name=MEMORY_COLLECTION,

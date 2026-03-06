@@ -8,7 +8,7 @@ import os
 
 load_dotenv()
 
-co = cohere.Client(os.getenv("COHERE_API_KEY"))
+co = cohere.ClientV2(os.getenv("COHERE_API_KEY"))
 qdrant = QdrantClient(":memory:")
 COLLECTION = "research_docs"
 VECTOR_SIZE = 1024  # Cohere embed-english-v3.0 outputs 1024 dimensions

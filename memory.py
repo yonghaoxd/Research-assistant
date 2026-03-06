@@ -8,7 +8,7 @@ import os
 
 load_dotenv()
 
-co = cohere.Client(os.getenv("COHERE_API_KEY"))
+co = cohere.ClientV2(os.getenv("COHERE_API_KEY"))
 qdrant = QdrantClient(":memory:")
 MEMORY_COLLECTION = "memory"
 VECTOR_SIZE = 1024

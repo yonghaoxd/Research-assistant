@@ -1,25 +1,85 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Security, Request
+from fastapi.security import APIKeyHeader
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from agents import supervisor
 from memory import MemorySystem
 from rag import load_pdf
+from datetime import datetime
+from collections import defaultdict
 import asyncio
 import os
+import re
+import time
 
 load_dotenv()
 
 app = FastAPI(title="AI Research Assistant")
 memory = MemorySystem()
 
-# Load PDF on startup
-PDF_PATH = "sample.pdf"
+# --- AUTH ---
+API_KEY_HEADER = APIKeyHeader(name="X-API-Key")
 
-@app.on_event("startup")
-async def startup():
-    chunks = load_pdf(PDF_PATH)
-    print(f"✅ Loaded {chunks} chunks from PDF")
+# Store valid API keys — in production this would be a database
+VALID_API_KEYS = {
+    "dev-key-123": "developer",
+    "user-key-456": "user",
+}
+
+def verify_api_key(api_key: str = Security(API_KEY_HEADER)) -> str:
+    if api_key not in VALID_API_KEYS:
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid API key. Include your key in the X-API-Key header."
+        )
+    return api_key
+
+# --- RATE LIMITER ---
+request_counts = defaultdict(list)  # key -> list of timestamps
+RATE_LIMIT = 10      # max requests
+RATE_WINDOW = 60     # per 60 seconds
+
+def check_rate_limit(api_key: str):
+    now = time.time()
+    window_start = now - RATE_WINDOW
+
+    # Remove old requests outside the window
+    request_counts[api_key] = [
+        t for t in request_counts[api_key] if t > window_start
+    ]
+
+    if len(request_counts[api_key]) >= RATE_LIMIT:
+        raise HTTPException(
+            status_code=429,
+            detail=f"Rate limit exceeded. Max {RATE_LIMIT} requests per minute."
+        )
+
+    request_counts[api_key].append(now)
+
+# --- INPUT SANITIZER ---
+BLOCKED_PATTERNS = [
+    r"ignore previous instructions",
+    r"ignore all instructions",
+    r"you are now",
+    r"forget your instructions",
+    r"act as",
+    r"jailbreak",
+    r"<script>",
+    r"system prompt",
+]
+
+def sanitize_input(text: str) -> str:
+    text_lower = text.lower()
+    for pattern in BLOCKED_PATTERNS:
+        if re.search(pattern, text_lower):
+            raise HTTPException(
+                status_code=400,
+                detail="Input contains blocked content."
+            )
+    # Remove excessive whitespace
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
 
 # --- MODELS ---
 class QueryRequest(BaseModel):
@@ -31,70 +91,61 @@ class QueryResponse(BaseModel):
     agents_used: list[str]
     status: str = "success"
 
+# --- LOAD PDF ON STARTUP ---
+PDF_PATH = "sample.pdf"
+
+@app.on_event("startup")
+async def startup():
+    chunks = load_pdf(PDF_PATH)
+    print(f"✅ Loaded {chunks} chunks from PDF")
+
 # --- ENDPOINTS ---
 @app.get("/")
 async def root():
     return {"status": "AI Research Assistant running"}
 
 @app.post("/query", response_model=QueryResponse)
-async def query(request: QueryRequest):
+async def query(
+    request: QueryRequest,
+    api_key: str = Security(verify_api_key)  # requires valid API key
+):
+    # Rate limit check
+    check_rate_limit(api_key)
+
+    # Sanitize input
+    clean_question = sanitize_input(request.question)
+
     try:
         short_term = memory.get_short_term()
-        long_term = memory.search(request.question)
+        long_term = memory.search(clean_question)
 
         answer, results = supervisor(
-            request.question,
+            clean_question,
             short_term,
             long_term
         )
 
-        memory.add_short_term("user", request.question)
+        memory.add_short_term("user", clean_question)
         memory.add_short_term("assistant", answer)
 
         important = ["what is", "how", "explain", "compare", "difference"]
-        if any(kw in request.question.lower() for kw in important):
-            memory.save(f"User asked: {request.question[:100]} | Answer: {answer[:150]}")
+        if any(kw in clean_question.lower() for kw in important):
+            memory.save(f"User asked: {clean_question[:100]} | Answer: {answer[:150]}")
 
         return QueryResponse(
-            question=request.question,
+            question=clean_question,
             answer=answer,
             agents_used=list(results.keys())
         )
 
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/query/stream")
-async def query_stream(request: QueryRequest):
-    async def generate():
-        short_term = memory.get_short_term()
-        long_term = memory.search(request.question)
-
-        answer, results = supervisor(
-            request.question,
-            short_term,
-            long_term
-        )
-
-        memory.add_short_term("user", request.question)
-        memory.add_short_term("assistant", answer)
-
-        # Stream word by word
-        words = answer.split()
-        for word in words:
-            yield word + " "
-            await asyncio.sleep(0.05)
-
-    return StreamingResponse(generate(), media_type="text/plain")
-
-@app.get("/memory")
-async def get_memory():
+@app.get("/health")
+async def health():
     return {
-        "short_term_messages": len(memory.short_term),
-        "short_term": memory.short_term
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat()
     }
-
-@app.delete("/memory")
-async def clear_memory():
-    memory.short_term = []
-    return {"status": "Short-term memory cleared"}

@@ -1,0 +1,181 @@
+2026-03-06 14:51:21,198 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:51:21,218 | INFO | Starting AI Research Assistant...
+2026-03-06 14:51:22,252 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:51:22,311 | INFO | Loaded 14 chunks from PDF
+2026-03-06 14:51:22,915 | INFO | METHOD=GET PATH=/docs STATUS=200 DURATION=0.00s
+2026-03-06 14:51:23,013 | INFO | METHOD=GET PATH=/openapi.json STATUS=200 DURATION=0.01s
+2026-03-06 14:51:24,082 | INFO | METHOD=GET PATH=/docs STATUS=200 DURATION=0.00s
+2026-03-06 14:51:24,131 | INFO | METHOD=GET PATH=/openapi.json STATUS=200 DURATION=0.00s
+2026-03-06 14:51:28,299 | INFO | METHOD=GET PATH=/docs STATUS=200 DURATION=0.00s
+2026-03-06 14:51:28,345 | INFO | METHOD=GET PATH=/openapi.json STATUS=200 DURATION=0.00s
+2026-03-06 14:52:32,546 | INFO | METHOD=POST PATH=/query STATUS=401 DURATION=0.00s
+2026-03-06 14:53:01,248 | INFO | Query received | key=dev-key-... | question=what is transformer
+2026-03-06 14:53:01,524 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:53:02,270 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:53:02,537 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:53:03,488 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:53:04,691 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:53:04,999 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:53:05,008 | INFO | Query completed | agents=['document', 'web'] | time=3.76s
+2026-03-06 14:53:05,011 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=3.77s
+2026-03-06 14:54:58,770 | INFO | Query received | key=dev-key-... | question=what is the latest gpu
+2026-03-06 14:54:59,080 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:54:59,325 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:54:59,983 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:55:00,250 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:55:00,270 | INFO | Query completed | agents=['web'] | time=1.50s
+2026-03-06 14:55:00,270 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.50s
+2026-03-06 14:56:29,849 | INFO | Query received | key=dev-key-... | question=who invent transformer
+2026-03-06 14:56:30,160 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:56:30,439 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:56:30,723 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 14:56:31,283 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:56:31,664 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 14:56:31,665 | INFO | Query completed | agents=['document'] | time=1.82s
+2026-03-06 14:56:31,665 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.82s
+2026-03-06 14:57:22,198 | INFO | METHOD=GET PATH=/metrics STATUS=200 DURATION=0.00s
+2026-03-06 15:10:53,955 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:10:53,986 | INFO | Starting AI Research Assistant...
+2026-03-06 15:10:55,042 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:10:55,102 | INFO | Loaded 14 chunks from PDF
+2026-03-06 15:14:39,914 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:14:39,943 | ERROR | Form data requires "python-multipart" to be installed. 
+You can install "python-multipart" with: 
+
+pip install python-multipart
+
+2026-03-06 15:18:44,810 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:18:44,845 | INFO | Starting AI Research Assistant...
+2026-03-06 15:18:45,881 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:18:45,941 | INFO | Loaded 14 chunks from PDF
+2026-03-06 15:19:11,125 | INFO | METHOD=GET PATH=/docs STATUS=200 DURATION=0.00s
+2026-03-06 15:19:11,219 | INFO | METHOD=GET PATH=/openapi.json STATUS=200 DURATION=0.01s
+2026-03-06 15:24:38,681 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:24:38,681 | ERROR | Upload failed: name 'load_pdf_bytes' is not defined
+2026-03-06 15:24:38,683 | INFO | METHOD=POST PATH=/upload STATUS=500 DURATION=0.02s
+2026-03-06 15:25:41,792 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:25:41,793 | ERROR | Upload failed: name 'load_pdf_bytes' is not defined
+2026-03-06 15:25:41,793 | INFO | METHOD=POST PATH=/upload STATUS=500 DURATION=0.01s
+2026-03-06 15:26:24,351 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:26:24,384 | INFO | Starting AI Research Assistant...
+2026-03-06 15:26:25,426 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:26:25,520 | INFO | Loaded 14 chunks from PDF
+2026-03-06 15:26:29,644 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:26:30,207 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:26:30,257 | INFO | Document indexed | doc_id=9ed5f64a | chunks=13
+2026-03-06 15:26:30,258 | INFO | METHOD=POST PATH=/upload STATUS=200 DURATION=0.65s
+2026-03-06 15:27:12,689 | INFO | Query received | key=dev-key-... | question=what is this thesis tell about?
+2026-03-06 15:27:12,978 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:27:13,325 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:27:13,703 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:27:13,913 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:27:14,348 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:27:14,650 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:27:14,657 | INFO | Query completed | agents=['document'] | time=1.97s
+2026-03-06 15:27:14,657 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.97s
+2026-03-06 15:30:37,968 | INFO | Query received | key=dev-key-... | question=what is this thesis about?
+2026-03-06 15:30:38,275 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:30:38,520 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:30:38,826 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:30:39,667 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:30:40,163 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:30:40,431 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:30:40,449 | INFO | Query completed | agents=['document'] | time=2.48s
+2026-03-06 15:30:40,449 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=2.48s
+2026-03-06 15:31:17,233 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:31:17,235 | INFO | Document indexed | doc_id=9ed5f64a | chunks=13
+2026-03-06 15:31:17,235 | INFO | METHOD=POST PATH=/upload STATUS=200 DURATION=0.02s
+2026-03-06 15:31:35,880 | INFO | Query received | key=dev-key-... | question=what is this thesis about?
+2026-03-06 15:31:36,399 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:31:36,651 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:31:37,017 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:31:37,224 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:31:37,708 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:31:38,149 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:31:38,546 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:31:38,564 | INFO | Query completed | agents=['document', 'math'] | time=2.68s
+2026-03-06 15:31:38,564 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=2.69s
+2026-03-06 15:32:16,238 | INFO | Query received | key=dev-key-... | question=what is this thesis about?
+2026-03-06 15:32:16,527 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:16,754 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:17,049 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:17,290 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:17,666 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:17,927 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:17,949 | INFO | Query completed | agents=['document'] | time=1.71s
+2026-03-06 15:32:17,949 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.71s
+2026-03-06 15:32:26,309 | INFO | Query received | key=dev-key-... | question=what is this thesis about?
+2026-03-06 15:32:26,611 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:26,836 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:27,124 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:27,324 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:27,609 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:32:27,871 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:27,885 | INFO | Query completed | agents=['document'] | time=1.58s
+2026-03-06 15:32:27,885 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.58s
+2026-03-06 15:32:53,801 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:53,853 | INFO | Starting AI Research Assistant...
+2026-03-06 15:32:54,876 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:32:54,935 | INFO | Loaded 14 chunks from PDF
+2026-03-06 15:32:55,097 | INFO | METHOD=GET PATH=/docs STATUS=200 DURATION=0.00s
+2026-03-06 15:32:55,199 | INFO | METHOD=GET PATH=/openapi.json STATUS=200 DURATION=0.01s
+2026-03-06 15:33:15,409 | INFO | METHOD=POST PATH=/upload STATUS=401 DURATION=0.02s
+2026-03-06 15:33:30,435 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:33:31,081 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:33:31,137 | INFO | Document indexed | doc_id=9ed5f64a | chunks=13
+2026-03-06 15:33:31,138 | INFO | METHOD=POST PATH=/upload STATUS=200 DURATION=0.72s
+2026-03-06 15:34:16,404 | INFO | Query received | key=dev-key-... | question=what is this thesis about?
+2026-03-06 15:34:16,707 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:16,983 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:17,298 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:17,767 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:18,078 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:18,338 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:18,350 | INFO | Query completed | agents=['document'] | time=1.95s
+2026-03-06 15:34:18,351 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.95s
+2026-03-06 15:34:44,191 | INFO | Query received | key=dev-key-... | question=what is image net?
+2026-03-06 15:34:44,464 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:44,741 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:45,016 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:45,438 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:46,123 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:34:46,381 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:34:46,398 | INFO | Query completed | agents=['document'] | time=2.21s
+2026-03-06 15:34:46,399 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=2.21s
+2026-03-06 15:35:20,561 | INFO | Query received | key=dev-key-... | question=what is the result?
+2026-03-06 15:35:20,993 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:35:21,244 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:35:21,509 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:35:21,746 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:35:22,211 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:35:22,475 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:35:22,491 | INFO | Query completed | agents=['document'] | time=1.93s
+2026-03-06 15:35:22,491 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.93s
+2026-03-06 15:37:52,938 | INFO | Query received | key=dev-key-... | question=what is ImageNet?
+2026-03-06 15:37:53,263 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:37:53,514 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:37:53,812 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:37:54,265 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:37:54,707 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:37:54,969 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:37:54,981 | INFO | Query completed | agents=['document', 'web'] | time=2.04s
+2026-03-06 15:37:54,981 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=2.04s
+2026-03-06 15:38:36,398 | INFO | Query received | key=dev-key-... | question=how many images does ImageNet contain?
+2026-03-06 15:38:36,698 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:38:36,955 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:38:37,557 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:38:37,983 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:38:38,241 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:38:38,262 | INFO | Query completed | agents=['web', 'math'] | time=1.86s
+2026-03-06 15:38:38,262 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.86s
+2026-03-06 15:38:57,748 | INFO | Upload received | file=sample2.pdf | size=1418820 bytes
+2026-03-06 15:38:57,750 | INFO | Document indexed | doc_id=9ed5f64a | chunks=13
+2026-03-06 15:38:57,752 | INFO | METHOD=POST PATH=/upload STATUS=200 DURATION=0.02s
+2026-03-06 15:39:34,273 | INFO | Query received | key=dev-key-... | question=which models performed best on ImageNet?
+2026-03-06 15:39:34,578 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:39:34,789 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:39:35,065 | INFO | HTTP Request: POST https://api.cohere.com/v2/embed "HTTP/1.1 200 OK"
+2026-03-06 15:39:35,628 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:39:36,048 | INFO | HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-06 15:39:36,051 | INFO | Query completed | agents=['document'] | time=1.78s
+2026-03-06 15:39:36,051 | INFO | METHOD=POST PATH=/query STATUS=200 DURATION=1.78s
